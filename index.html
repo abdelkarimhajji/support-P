@@ -3,29 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelLab - App Support</title>
+    <title>App Support Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 40px auto; padding: 20px; text-align: center; }
-        h1 { color: #1976D2; }
-        .contact-box { background: #f4f4f4; padding: 30px; border-radius: 12px; margin-top: 20px; border: 1px solid #ddd; }
-        .email { font-size: 1.2em; color: #1976D2; font-weight: bold; text-decoration: none; }
-        .footer { margin-top: 50px; font-size: 0.85em; color: #888; border-top: 1px solid #eee; padding-top: 20px; }
+        :root {
+            --primary-green: #2ecc71;
+            --dark-bg: #000000;
+            --card-bg: #1a1a1a;
+            --text-white: #ffffff;
+            --text-grey: #aaaaaa;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 20px 50px;
+            background: rgba(0,0,0,0.8);
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-white);
+        }
+
+        .logo span {
+            color: var(--primary-green);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: var(--text-grey);
+            font-size: 1.2rem;
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            width: 300px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-card i {
+            font-size: 50px;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--primary-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            margin-top: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn.secondary {
+            background: transparent;
+            border: 2px solid var(--primary-green);
+        }
+
+        /* --- MODAL STYLES --- */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: #111;
+            margin: 5% auto;
+            padding: 40px;
+            border: 1px solid var(--primary-green);
+            width: 80%;
+            max-width: 800px;
+            border-radius: 20px;
+            color: var(--text-white);
+            text-align: left;
+        }
+
+        .close-btn {
+            color: var(--text-grey);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: var(--primary-green);
+        }
+
+        .policy-text h3 {
+            color: var(--primary-green);
+            margin-top: 25px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            color: var(--text-grey);
+            font-size: 14px;
+            border-top: 1px solid #333;
+        }
     </style>
 </head>
 <body>
-    <h1>PixelLab Support</h1>
-    <p>Welcome to the official support page for <strong>PixelLab - Text on pictures</strong>.</p>
-    
-    <div class="contact-box">
-        <h3>Need Help?</h3>
-        <p>If you have any questions, bug reports, or feature requests, please contact <strong>Abdelkarim Hajji</strong> directly via email:</p>
-        <p><a href="mailto:abdelkarim.hujji@gmail.com" class="email">abdelkarim.hujji@gmail.com</a></p>
-        <p style="font-size: 0.9em; color: #666;">We typically respond within 24-48 hours.</p>
+    <header>
+        <div class="logo">Byte<span>Craft</span></div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1><span id="appNameTitle">App</span> Support</h1>
+            <p>Official support center for apps by Abdelkarim Hajji</p>
+        </section>
+
+        <section class="contact-container">
+            <div class="contact-card">
+                <i class="fas fa-envelope-open-text"></i>
+                <h2>Email Support</h2>
+                <p>For technical issues, bug reports, or account inquiries.</p>
+                <a href="mailto:abdelkarim.hujji@gmail.com" class="btn">Contact Us</a>
+            </div>
+
+            <div class="contact-card">
+                <i class="fas fa-shield-alt"></i>
+                <h2>Privacy Policy</h2>
+                <p>Read how we handle your data securely and transparently.</p>
+                <button class="btn secondary" onclick="openModal()">View Policy</button>
+            </div>
+        </section>
+    </main>
+
+    <div id="policyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="policy-text">
+                <h1>Privacy Policy for <span id="appNamePolicy">Our Apps</span></h1>
+                <p><strong>Last Updated:</strong> January 2026</p>
+                <p>This Privacy Policy applies to the mobile application <strong><span id="appNameBody">our app</span></strong>, developed by Abdelkarim Hajji.</p>
+                
+                <h3>1. Information We Collect</h3>
+                <p>We believe in privacy first. Our applications collect the minimum amount of data required for functionality:</p>
+                <ul>
+                    <li><strong>For Games:</strong> We may store local game progress and scores on your device.</li>
+                    <li><strong>For Network Utilities:</strong> We do NOT log your browsing history, traffic destination, or data content. We only process the technical connection data required to establish the secure tunnel.</li>
+                    <li><strong>For General Tools:</strong> We store your user preferences locally on your device to improve your experience.</li>
+                </ul>
+
+                <h3>2. Third-Party Services</h3>
+                <p>We may use trusted third-party services to improve our app experience:</p>
+                <ul>
+                    <li><strong>Google AdMob:</strong> For displaying advertisements.</li>
+                    <li><strong>Firebase:</strong> For analytics and crash reporting (to help us fix bugs).</li>
+                </ul>
+
+                <h3>3. Data Security</h3>
+                <p>We implement industry-standard security measures. For our network tools, we use strong encryption to ensure your connection remains private and secure.</p>
+
+                <h3>4. Contact Us</h3>
+                <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+                <p><strong>Email:</strong> abdelkarim.hujji@gmail.com</p>
+                
+                <br>
+                <button class="btn" onclick="closeModal()">I Understand</button>
+            </div>
+        </div>
     </div>
 
-    <div class="footer">
-        &copy; 2025 Abdelkarim Hajji. All rights reserved.<br>
-        Developed with passion for creative editing.
-    </div>
+    <footer>
+        <p>&copy; 2026 Abdelkarim Hajji. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // --- DYNAMIC APP NAME SCRIPT ---
+        // This script looks at the URL for "?app=Name" and updates the page text automatically.
+        
+        function getAppName() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const app = urlParams.get('app');
+            return app ? app : "Our Applications";
+        }
+
+        const appName = getAppName();
+
+        // Update the text in the Title, Hero, and Policy
+        document.getElementById('appNameTitle').innerText = appName;
+        document.getElementById('appNamePolicy').innerText = appName;
+        document.getElementById('appNameBody').innerText = appName;
+        document.title = appName + " Support | ByteCraft";
+
+        // Modal Logic
+        function openModal() {
+            document.getElementById("policyModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("policyModal").style.display = "none";
+        }
+
+        // Close modal if user clicks outside of the box
+        window.onclick = function(event) {
+            let modal = document.getElementById("policyModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
